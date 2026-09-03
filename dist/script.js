@@ -7,7 +7,10 @@ const sovereignty = document.querySelector('.sovereignty');
 const nav = document.querySelector('.nav');
 const flowItems = [...document.querySelectorAll('.flow-item')];
 const chapterLinks = [...document.querySelectorAll('[data-chapter]')];
+const navToggle = document.querySelector('.nav-toggle');
+const mobileNav = document.querySelector('.mobile-nav');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const finePointer = window.matchMedia('(pointer: fine)').matches;
 
 const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 const sceneProgress = (element) => {
@@ -166,6 +169,80 @@ function setupSignalField() {
   });
 }
 
+function closeMenu() {
+  navToggle.setAttribute('aria-expanded', 'false');
+  mobileNav.classList.remove('open');
+  mobileNav.setAttribute('aria-hidden', 'true');
+  body.classList.remove('menu-open');
+}
+
+function openMenu() {
+  navToggle.setAttribute('aria-expanded', 'true');
+  mobileNav.classList.add('open');
+  mobileNav.setAttribute('aria-hidden', 'false');
+  body.classList.add('menu-open');
+}
+
+if (navToggle && mobileNav) {
+  navToggle.addEventListener('click', () => {
+    if (navToggle.getAttribute('aria-expanded') === 'true') closeMenu();
+    else openMenu();
+  });
+  mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 820) closeMenu();
+  });
+}
+
+function setupCursor() {
+  const cursor = document.querySelector('.cursor');
+  if (!cursor || reduceMotion || !finePointer) return;
+  root.classList.add('has-cursor');
+  let cx = window.innerWidth / 2;
+  let cy = window.innerHeight / 2;
+  let tx = cx;
+  let ty = cy;
+
+  function renderCursor() {
+    cx += (tx - cx) * .18;
+    cy += (ty - cy) * .18;
+    cursor.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
+    requestAnimationFrame(renderCursor);
+  }
+
+  window.addEventListener('pointermove', (event) => {
+    tx = event.clientX;
+    ty = event.clientY;
+    cursor.classList.add('active');
+  }, { passive: true });
+  window.addEventListener('pointerleave', () => cursor.classList.remove('active'));
+
+  document.querySelectorAll('a, button, .capability, .domain').forEach((element) => {
+    element.addEventListener('pointerenter', () => cursor.classList.add('hover'));
+    element.addEventListener('pointerleave', () => cursor.classList.remove('hover'));
+  });
+
+  requestAnimationFrame(renderCursor);
+}
+
+function setupMagnetic() {
+  if (reduceMotion || !finePointer) return;
+  document.querySelectorAll('.magnetic').forEach((element) => {
+    element.addEventListener('pointermove', (event) => {
+      const rect = element.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      element.style.transform = `translate(${x * .28}px, ${y * .38}px)`;
+    });
+    element.addEventListener('pointerleave', () => {
+      element.style.transform = '';
+    });
+  });
+}
+
 window.addEventListener('scroll', requestMotion, { passive: true });
 window.addEventListener('resize', requestMotion);
 window.addEventListener('load', () => {
@@ -180,5 +257,7 @@ window.addEventListener('load', () => {
   window.setTimeout(() => preloader.classList.add('done'), 1050);
   body.classList.add('loaded');
   setupSignalField();
+  setupCursor();
+  setupMagnetic();
   renderMotion();
 });

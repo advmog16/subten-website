@@ -21,6 +21,7 @@
   <div class="site-grid" aria-hidden="true"></div>
   <div class="noise" aria-hidden="true"></div>
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <div class="cursor" aria-hidden="true"><i></i><b></b></div>
 
   <header class="nav">
     <a class="brand" href="#top" aria-label="SUBTEN home">
@@ -33,9 +34,25 @@
     </nav>
     <div class="nav-end">
       <span class="system-status"><i></i> SYSTEMS ONLINE</span>
-      <a class="nav-contact" href="#contact">Contact <span>↗</span></a>
+      <a class="nav-contact magnetic" href="#contact">Contact <span>↗</span></a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav aria-label="Mobile navigation">
+      <a href="#capabilities"><span>01</span> Capabilities</a>
+      <a href="#architecture"><span>02</span> Architecture</a>
+      <a href="#sovereignty"><span>03</span> Sovereignty</a>
+      <a href="#contact"><span>04</span> Contact</a>
+    </nav>
+    <div class="mobile-nav-foot">
+      <span class="system-status"><i></i> SYSTEMS ONLINE</span>
+      <a href="mailto:info@subten.space">INFO@SUBTEN.SPACE</a>
+    </div>
+  </div>
 
   <aside class="chapter-rail" aria-label="Page sections">
     <a class="active" href="#top" data-chapter="top"><i></i><span>INTRO</span></a>
@@ -65,7 +82,7 @@
           </h1>
           <div class="hero-bottom reveal">
             <p>Integrated sensing, intelligence and command systems built for high-trust environments.</p>
-            <a href="#capabilities">EXPLORE THE SYSTEM <span>↓</span></a>
+            <a class="magnetic" href="#capabilities">EXPLORE THE SYSTEM <span>↓</span></a>
           </div>
         </div>
         <div class="hero-readout" aria-hidden="true">
@@ -149,7 +166,7 @@
       <h2 class="contact-title reveal">ENGINEERING THE<br /><span>FUTURE OF DEFENSE.</span></h2>
       <div class="contact-row reveal">
         <p>Protecting critical assets.<br />Empowering national security.</p>
-        <a href="mailto:info@subten.space">START A CONVERSATION <span>↗</span></a>
+        <a class="magnetic" href="mailto:info@subten.space">START A CONVERSATION <span>↗</span></a>
       </div>
     </section>
   </main>
