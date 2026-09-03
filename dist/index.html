@@ -3,45 +3,61 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#080911" />
+  <meta name="theme-color" content="#06070c" />
   <meta name="description" content="SUBTEN engineers sovereign defense technologies for critical infrastructure protection." />
   <title>SUBTEN — Advanced Defense Technologies</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
   <div class="preloader" aria-hidden="true">
-    <div class="preloader-mark">SUBTEN</div>
+    <div class="preloader-logo logo-crop"><img src="./assets/subten-logo.png" alt="" /></div>
+    <div class="preloader-status"><span>SYSTEM INITIALIZING</span><b>00</b></div>
     <div class="preloader-line"><span></span></div>
-    <div class="preloader-meta">SYSTEM INITIALIZING</div>
   </div>
 
   <div class="site-grid" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
 
   <header class="nav">
     <a class="brand" href="#top" aria-label="SUBTEN home">
-      <span>SUBTEN</span>
-      <small>ADVANCED DEFENSE TECHNOLOGIES</small>
+      <span class="logo-crop logo-nav"><img src="./assets/subten-logo.png" alt="SUBTEN" /></span>
     </a>
     <nav aria-label="Primary navigation">
-      <a href="#capabilities">Capabilities</a>
-      <a href="#architecture">Architecture</a>
-      <a href="#sovereignty">Sovereignty</a>
+      <a href="#capabilities"><span>01</span> Capabilities</a>
+      <a href="#architecture"><span>02</span> Architecture</a>
+      <a href="#sovereignty"><span>03</span> Sovereignty</a>
     </nav>
-    <a class="nav-contact" href="#contact">Contact <span>↗</span></a>
+    <div class="nav-end">
+      <span class="system-status"><i></i> SYSTEMS ONLINE</span>
+      <a class="nav-contact" href="#contact">Contact <span>↗</span></a>
+    </div>
   </header>
+
+  <aside class="chapter-rail" aria-label="Page sections">
+    <a class="active" href="#top" data-chapter="top"><i></i><span>INTRO</span></a>
+    <a href="#capabilities" data-chapter="capabilities"><i></i><span>SYSTEMS</span></a>
+    <a href="#architecture" data-chapter="architecture"><i></i><span>ARCHITECTURE</span></a>
+    <a href="#sovereignty" data-chapter="sovereignty"><i></i><span>SOVEREIGNTY</span></a>
+    <a href="#contact" data-chapter="contact"><i></i><span>CONTACT</span></a>
+  </aside>
 
   <main id="top">
     <section class="hero" data-scene="hero">
       <div class="hero-sticky">
         <img class="hero-image" src="./assets/hero-radar.jpg" alt="Integrated low-altitude airspace protection system" />
         <div class="hero-shade"></div>
-        <div class="radar-reticle" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
+        <canvas id="signal-field" aria-hidden="true"></canvas>
+        <div class="hero-scan" aria-hidden="true"></div>
+        <div class="radar-reticle" aria-hidden="true"><i></i><i></i><i></i><b></b><em>TGT / 01</em></div>
         <div class="hero-copy">
-          <p class="eyebrow reveal">SOVEREIGN DEFENSE SYSTEMS · RIYADH</p>
+          <div class="hero-meta reveal">
+            <p class="eyebrow">SOVEREIGN DEFENSE SYSTEMS</p>
+            <span>RIYADH · KSA / 24.7136° N</span>
+          </div>
           <h1 class="hero-title" aria-label="Protecting critical infrastructure">
             <span class="title-line"><b>PROTECTING</b></span>
             <span class="title-line"><b>CRITICAL</b></span>
@@ -49,15 +65,18 @@
           </h1>
           <div class="hero-bottom reveal">
             <p>Integrated sensing, intelligence and command systems built for high-trust environments.</p>
-            <a href="#capabilities">Explore the system <span>↓</span></a>
+            <a href="#capabilities">EXPLORE THE SYSTEM <span>↓</span></a>
           </div>
         </div>
-        <div class="hero-coordinates" aria-hidden="true">24.7136° N<br />46.6753° E</div>
+        <div class="hero-readout" aria-hidden="true">
+          <span>LIVE ENVIRONMENT</span><b>SECTOR 04</b><i></i><small>SCANNING LOW-ALTITUDE DOMAIN</small>
+        </div>
+        <div class="scene-counter" aria-hidden="true"><span>SCROLL TO EXPLORE</span><b>01</b><i></i><em>05</em></div>
       </div>
     </section>
 
-    <section class="intro section-pad" id="capabilities">
-      <div class="section-index reveal">01 — THE COMPANY</div>
+    <section class="intro section-pad" id="capabilities" data-chapter-section="capabilities">
+      <div class="section-index reveal"><span>01</span><b>THE COMPANY</b><em>INTEGRATED MISSION SYSTEMS</em></div>
       <div class="intro-grid">
         <h2 class="display reveal">ONE PICTURE.<br /><span>EVERY SIGNAL.</span></h2>
         <div class="intro-copy reveal">
@@ -65,58 +84,53 @@
           <p>We connect radar, RF, EO/IR, video analytics and secure command-and-control into one operational picture—engineered around the mission, not a single product.</p>
         </div>
       </div>
-
       <div class="capability-list">
-        <article class="capability reveal">
-          <span>01</span><h3>Counter-UAS Systems</h3><p>Detect, classify, track and coordinate response across the low-altitude domain.</p><b>↗</b>
-        </article>
-        <article class="capability reveal">
-          <span>02</span><h3>Advanced Surveillance</h3><p>Long-range optical, thermal and rapidly deployable sensing for sensitive sites.</p><b>↗</b>
-        </article>
-        <article class="capability reveal">
-          <span>03</span><h3>AI Video Analytics</h3><p>Turn camera networks into proactive systems with edge intelligence and sensor fusion.</p><b>↗</b>
-        </article>
-        <article class="capability reveal">
-          <span>04</span><h3>Command &amp; Control</h3><p>A secure decision layer that brings every sensor and response workflow together.</p><b>↗</b>
-        </article>
+        <article class="capability reveal"><span>01</span><h3>Counter-UAS Systems</h3><p>Detect, classify, track and coordinate response across the low-altitude domain.</p><b>↗</b></article>
+        <article class="capability reveal"><span>02</span><h3>Advanced Surveillance</h3><p>Long-range optical, thermal and rapidly deployable sensing for sensitive sites.</p><b>↗</b></article>
+        <article class="capability reveal"><span>03</span><h3>AI Video Analytics</h3><p>Turn camera networks into proactive systems with edge intelligence and sensor fusion.</p><b>↗</b></article>
+        <article class="capability reveal"><span>04</span><h3>Command &amp; Control</h3><p>A secure decision layer that brings every sensor and response workflow together.</p><b>↗</b></article>
       </div>
     </section>
 
-    <section class="command-scene" data-scene="command">
-      <div class="command-sticky">
+    <section class="command-scene" data-scene="command" data-chapter-section="architecture">
+      <div class="command-sticky" id="architecture">
         <img src="./assets/command-center.jpg" alt="Integrated command and control center" />
         <div class="command-overlay"></div>
+        <div class="command-map" aria-hidden="true"><i></i><i></i><i></i><span></span></div>
         <div class="command-copy">
           <p class="eyebrow reveal">02 — SYSTEM ARCHITECTURE</p>
           <h2 class="display reveal">FROM SIGNAL<br />TO <span>DECISION.</span></h2>
           <p class="reveal">A layered architecture reduces single-sensor dependency and gives operators the clarity to act.</p>
         </div>
-        <div class="architecture-flow" id="architecture" aria-label="System architecture flow">
+        <div class="architecture-flow" aria-label="System architecture flow">
+          <div class="flow-line" aria-hidden="true"><span></span></div>
           <div class="flow-item"><small>01</small><strong>DETECT</strong><span>RADAR · RF · EO/IR</span></div>
           <div class="flow-item"><small>02</small><strong>CLASSIFY</strong><span>AI · SENSOR FUSION</span></div>
           <div class="flow-item"><small>03</small><strong>DECIDE</strong><span>C2 · THREAT SCORE</span></div>
           <div class="flow-item"><small>04</small><strong>RESPOND</strong><span>COORDINATED ACTION</span></div>
         </div>
+        <div class="scene-counter scene-counter-command" aria-hidden="true"><span>MISSION FLOW</span><b>02</b><i></i><em>05</em></div>
       </div>
     </section>
 
-    <section class="domains section-pad">
-      <div class="section-index reveal">03 — MISSION DOMAINS</div>
+    <section class="domains section-pad" data-chapter-section="domains">
+      <div class="section-index reveal"><span>03</span><b>MISSION DOMAINS</b><em>MULTI-DOMAIN AWARENESS</em></div>
       <div class="domains-head">
         <h2 class="display reveal">SECURING<br /><span>EVERY DOMAIN.</span></h2>
-        <p class="lead reveal">Integrated protection for national infrastructure across air, land and maritime environments.</p>
+        <p class="lead reveal">Integrated protection for national infrastructure across air, land, maritime and digital environments.</p>
       </div>
       <div class="domain-strip" aria-label="Protected mission domains">
-        <div class="domain reveal"><span>AIR</span><small>01</small></div>
-        <div class="domain reveal"><span>LAND</span><small>02</small></div>
-        <div class="domain reveal"><span>SEA</span><small>03</small></div>
-        <div class="domain reveal"><span>CYBER</span><small>04</small></div>
+        <div class="domain reveal" data-word="AIR"><span>AIR</span><small>01</small><i>LOW-ALTITUDE AWARENESS</i></div>
+        <div class="domain reveal" data-word="LAND"><span>LAND</span><small>02</small><i>PERIMETER INTELLIGENCE</i></div>
+        <div class="domain reveal" data-word="SEA"><span>SEA</span><small>03</small><i>COASTAL MONITORING</i></div>
+        <div class="domain reveal" data-word="CYBER"><span>CYBER</span><small>04</small><i>SECURE DATA LAYER</i></div>
       </div>
     </section>
 
-    <section class="sovereignty" id="sovereignty">
+    <section class="sovereignty" id="sovereignty" data-chapter-section="sovereignty">
       <img src="./assets/critical-assets.jpg" alt="Connected protection for critical national assets" />
       <div class="sovereignty-shade"></div>
+      <div class="sovereignty-orbit" aria-hidden="true"><i></i><i></i><b></b></div>
       <div class="sovereignty-copy">
         <p class="eyebrow reveal">04 — LOCALIZATION &amp; SOVEREIGNTY</p>
         <h2 class="display reveal">BUILT HERE.<br /><span>HELD HERE.</span></h2>
@@ -129,8 +143,9 @@
       </div>
     </section>
 
-    <section class="contact section-pad" id="contact">
-      <p class="eyebrow reveal">READY TO BUILD THE NEXT LAYER</p>
+    <section class="contact section-pad" id="contact" data-chapter-section="contact">
+      <div class="contact-orbit" aria-hidden="true"></div>
+      <p class="eyebrow reveal">05 — READY TO BUILD THE NEXT LAYER</p>
       <h2 class="contact-title reveal">ENGINEERING THE<br /><span>FUTURE OF DEFENSE.</span></h2>
       <div class="contact-row reveal">
         <p>Protecting critical assets.<br />Empowering national security.</p>
@@ -140,9 +155,9 @@
   </main>
 
   <footer>
-    <span>SUBTEN</span>
+    <span class="logo-crop logo-footer"><img src="./assets/subten-logo.png" alt="SUBTEN" /></span>
     <span>RIYADH · KINGDOM OF SAUDI ARABIA</span>
-    <span>© 2026</span>
+    <span>© 2026 · INFO@SUBTEN.SPACE</span>
   </footer>
 
   <script src="./script.js"></script>
