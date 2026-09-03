@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Andreas";
+  src: url("./assets/Andreas.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   --bg: #06070c;
   --surface: #10121a;
@@ -72,9 +80,9 @@ img { display: block; max-width: 100%; }
 .hero-meta span { color: var(--quiet); font-size: .7rem; letter-spacing: .13em; }
 .eyebrow { margin: 0; color: var(--accent-soft); font-size: .75rem; font-weight: 600; letter-spacing: .16em; }
 .hero-title, .display, .contact-title { margin: 1.45rem 0; letter-spacing: -.068em; line-height: .87; font-weight: 500; }
-.hero-title { font-size: clamp(3.7rem, 8.7vw, 9.5rem); max-width: 80rem; }
+.hero-title { max-width: 80rem; font-family: "Andreas", Inter, Arial, sans-serif; font-size: clamp(3.7rem, 8.7vw, 9.5rem); font-weight: 400; letter-spacing: -.035em; line-height: .84; }
 .title-line { display: block; overflow: hidden; padding-bottom: .08em; }
-.title-line b { display: block; font-weight: 500; transform: translateY(115%); animation: titleIn 1.05s var(--ease) forwards; }
+.title-line b { display: block; font-weight: 400; transform: translateY(115%); animation: titleIn 1.05s var(--ease) forwards; }
 .title-line:nth-child(2) b { animation-delay: .12s; }
 .title-line:nth-child(3) b { animation-delay: .24s; }
 .title-line.accent { color: var(--accent-soft); }
