@@ -1,3 +1,4 @@
+// === Element refs & feature detection ===
 const root = document.documentElement;
 const body = document.body;
 const progress = document.querySelector('.scroll-progress span');
@@ -12,6 +13,7 @@ const mobileNav = document.querySelector('.mobile-nav');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = window.matchMedia('(pointer: fine)').matches;
 
+// === Scroll-driven parallax motion (hero, command, sovereignty scenes) ===
 const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 const sceneProgress = (element) => {
   const rect = element.getBoundingClientRect();
@@ -68,6 +70,7 @@ function requestMotion() {
   }
 }
 
+// === Reveal-on-scroll for .reveal elements ===
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -82,6 +85,7 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 
+// === Active chapter indicator (side rail) ===
 const chapterObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) return;
@@ -92,6 +96,7 @@ const chapterObserver = new IntersectionObserver((entries) => {
 
 [hero, ...document.querySelectorAll('[data-chapter-section]')].forEach((section) => chapterObserver.observe(section));
 
+// === Capability row hover glow (follows cursor) ===
 document.querySelectorAll('.capability').forEach((item) => {
   item.addEventListener('pointermove', (event) => {
     const rect = item.getBoundingClientRect();
@@ -99,6 +104,7 @@ document.querySelectorAll('.capability').forEach((item) => {
   });
 });
 
+// === Hero pointer parallax (radar reticle & readout drift) ===
 if (!reduceMotion) {
   window.addEventListener('pointermove', (event) => {
     const x = event.clientX / window.innerWidth - .5;
@@ -109,6 +115,7 @@ if (!reduceMotion) {
   }, { passive: true });
 }
 
+// === Hero background canvas: connected signal points ===
 function setupSignalField() {
   const canvas = document.querySelector('#signal-field');
   if (!canvas || reduceMotion) return;
@@ -169,6 +176,7 @@ function setupSignalField() {
   });
 }
 
+// === Mobile navigation (hamburger toggle + slide-in panel) ===
 function closeMenu() {
   navToggle.setAttribute('aria-expanded', 'false');
   mobileNav.classList.remove('open');
@@ -197,6 +205,7 @@ if (navToggle && mobileNav) {
   });
 }
 
+// === Custom cursor (dot + ring, follows pointer with lerp easing) ===
 function setupCursor() {
   const cursor = document.querySelector('.cursor');
   if (!cursor || reduceMotion || !finePointer) return;
@@ -228,6 +237,7 @@ function setupCursor() {
   requestAnimationFrame(renderCursor);
 }
 
+// === Magnetic hover effect for primary CTAs ===
 function setupMagnetic() {
   if (reduceMotion || !finePointer) return;
   document.querySelectorAll('.magnetic').forEach((element) => {
@@ -243,6 +253,7 @@ function setupMagnetic() {
   });
 }
 
+// === Boot sequence & global listeners ===
 window.addEventListener('scroll', requestMotion, { passive: true });
 window.addEventListener('resize', requestMotion);
 window.addEventListener('load', () => {
