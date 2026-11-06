@@ -1,7 +1,0 @@
-/* Velocity marquee band */
-.band { overflow: hidden; padding: clamp(18px, 3vw, 34px) 0; border-block: 1px solid var(--line); background: var(--ink); color: var(--paper); }
-.band-track { display: flex; width: max-content; will-change: transform; direction: ltr; }
-.band-row { display: flex; align-items: center; flex-shrink: 0; }
-.band-row span { font-size: clamp(44px, 8vw, 128px); line-height: 1; letter-spacing: -.04em; font-weight: 500; padding: 0 .3em; white-space: nowrap; }
-.band-row em { color: var(--red); }
-.band-row .dot { width: .28em; height: .28em; padding: 0; border-radius: 50%; background: var(--red); font-size: clamp(44px, 8vw, 128px); }

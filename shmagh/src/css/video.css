@@ -1,8 +1,0 @@
-/* Video modal */
-.video { position: fixed; inset: 0; z-index: 140; display: grid; place-items: center; background: rgba(10, 9, 8, .94); opacity: 0; visibility: hidden; transition: opacity .5s, visibility .5s; padding: var(--pad); }
-.video.is-open { opacity: 1; visibility: visible; }
-.video-frame { width: min(100%, calc((100vh - 140px) * 16 / 9)); aspect-ratio: 16 / 9; background: #000; transform: scale(.94); transition: transform .8s var(--ease); }
-.video.is-open .video-frame { transform: none; }
-.video-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
-.video-close { position: absolute; top: 18px; right: var(--pad); width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .3); color: #fff; font-size: 16px; }
-.video-close:hover { background: #fff; color: #000; }
